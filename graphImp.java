@@ -18,6 +18,27 @@ class graphSm{
         //neighbor.add(u);
         //graph.put(v,neighbor);
     }
+    
+    void BFS(int s){
+        System.out.println("===---BFS---===");
+        HashSet<Integer> visited = new HashSet<>();
+        Queue<Integer> q = new LinkedList<>();
+        q.add(s);
+        visited.add(s);
+        while(!q.isEmpty()){
+            s = q.poll();
+            System.out.print(s+" ");
+            for(Integer n: graph.get(s)){
+                if(!visited.contains(s)){
+                    q.add(n);
+                    visited.add(n);
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    
     void print(){
         System.out.println(graph.keySet());
         for(Integer key:graph.keySet()){
@@ -43,6 +64,8 @@ public class graphImp{
         g.addEdge(3, 4);
         g.addEdge(3, 4);
         g.addEdge(5, 0);
+        g.BFS(0);
+        System.out.println();
         g.print();
     }
 }

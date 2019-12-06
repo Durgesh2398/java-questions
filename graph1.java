@@ -1,4 +1,3 @@
-import java.util.LinkedList;
 import java.util.*;
 class graph{
     int v;
@@ -23,6 +22,7 @@ class graph{
             System.out.println();
         }
     }
+
     void BFS(int s){
         System.out.println("===---BFS---===");
         boolean visited[] = new boolean[v];
@@ -31,7 +31,7 @@ class graph{
         visited[s]=true;
         while(!q.isEmpty()){
             s = q.poll();
-            System.out.println(s+" ");
+            System.out.print(s+" ");
             for(Integer n: adjListArray[s]){
                 if(!visited[n]){
                     q.add(n);
@@ -41,6 +41,7 @@ class graph{
         }
         System.out.println();
     }
+
 }
 public class graph1{
     public static void main(String[] args){
