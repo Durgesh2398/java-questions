@@ -23,12 +23,20 @@ class LinkedMain{
             n.next =node;
         }
     }
+    public void insertAtStart(int data){
+        Node node = new Node(data);
+        node.data=data;
+        node.next=null;
+        node.next=head;
+        head=node;
+    }
     public void show(){
         Node node= head;
         while(node!=null){
-            System.out.println(node.data);
+            System.out.print(node.data+" ");
             node = node.next;
         }
+        System.out.println("");
     }
 }
 public class LinkedList{
@@ -38,6 +46,7 @@ public class LinkedList{
         list.insert(6);
         list.insert(7);
         list.show();
-
+        list.insertAtStart(10);
+        list.show();
     }
 }
