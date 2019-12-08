@@ -34,6 +34,9 @@ class LinkedMain{
         Node node = new Node(data);
         node.data=data;
         node.next=null;
+        if(index ==0){
+            insertAtStart(data);
+        }
         Node n=head;
         for(int i=0;i<index-1;i++){
             n=n.next;
@@ -62,6 +65,8 @@ public class LinkedList{
         list.insertAt(2, 45);
         list.show();
         list.insertAt(4, 100);
+        list.show();
+        list.insertAt(0, 12);
         list.show();
     }
 }
