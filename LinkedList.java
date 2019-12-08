@@ -30,6 +30,17 @@ class LinkedMain{
         node.next=head;
         head=node;
     }
+    public void insertAt(int index,int data){
+        Node node = new Node(data);
+        node.data=data;
+        node.next=null;
+        Node n=head;
+        for(int i=0;i<index-1;i++){
+            n=n.next;
+        }
+        node.next = n.next;
+        n.next = node;
+    }
     public void show(){
         Node node= head;
         while(node!=null){
@@ -47,6 +58,10 @@ public class LinkedList{
         list.insert(7);
         list.show();
         list.insertAtStart(10);
+        list.show();
+        list.insertAt(2, 45);
+        list.show();
+        list.insertAt(4, 100);
         list.show();
     }
 }
