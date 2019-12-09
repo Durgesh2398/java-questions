@@ -54,6 +54,39 @@ class LinkedMain{
         }
         System.out.println("");
     }
+    /*
+    public void delete(int index){
+        if(index==0){
+            head=head.next;
+        }
+        else{
+            Node n=head;
+            Node n1=null;
+            for(int i=0;i<index-1;i++){
+                n=n.next;
+            }
+            n1.next = n.next;
+            n.next = n1.next;
+        }
+    }
+    */
+    void delete(int position) 
+    { 
+        if (head == null) 
+            return; 
+        Node temp = head; 
+        if (position == 0) 
+        { 
+            head = temp.next;   // Change head 
+            return; 
+        } 
+        for (int i=0; temp!=null && i<position-1; i++) 
+            temp = temp.next; 
+        if (temp == null || temp.next == null) 
+            return; 
+        Node next = temp.next.next; 
+        temp.next = next;  // Unlink the deleted node from list 
+    }
 }
 public class LinkedList{
     public static void main(String[] args){
@@ -69,6 +102,8 @@ public class LinkedList{
         list.insertAt(4, 100);
         list.show();
         list.insertAt(0, 12);
+        list.show();
+        list.delete(2);
         list.show();
     }
 }
