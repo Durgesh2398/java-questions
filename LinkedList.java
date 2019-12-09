@@ -54,22 +54,20 @@ class LinkedMain{
         }
         System.out.println("");
     }
-    /*
-    public void delete(int index){
-        if(index==0){
-            head=head.next;
-        }
-        else{
-            Node n=head;
-            Node n1=null;
-            for(int i=0;i<index-1;i++){
-                n=n.next;
-            }
-            n1.next = n.next;
-            n.next = n1.next;
-        }
+    void printMiddle() 
+    { 
+        Node slow_ptr = head; 
+        Node fast_ptr = head; 
+        if (head != null) 
+        { 
+            while (fast_ptr != null && fast_ptr.next != null) 
+            { 
+                fast_ptr = fast_ptr.next.next; 
+                slow_ptr = slow_ptr.next; 
+            } 
+            System.out.println("The middle element is [" + slow_ptr.data + "] \n"); 
+        } 
     }
-    */
     void delete(int position) 
     { 
         if (head == null) 
@@ -82,11 +80,22 @@ class LinkedMain{
         } 
         for (int i=0; temp!=null && i<position-1; i++) 
             temp = temp.next; 
-        if (temp == null || temp.next == null) 
-            return; 
         Node next = temp.next.next; 
         temp.next = next;  // Unlink the deleted node from list 
     }
+    public void deleteMid()  
+    {  
+        Node slow_ptr = head;  
+        Node fast_ptr = head;  
+        Node prev = null;  
+        while (fast_ptr != null && fast_ptr.next != null)  
+        {  
+            fast_ptr = fast_ptr.next.next;  
+            prev = slow_ptr;  
+            slow_ptr = slow_ptr.next;  
+        }  
+        prev.next = slow_ptr.next;   
+    } 
 }
 public class LinkedList{
     public static void main(String[] args){
@@ -104,6 +113,9 @@ public class LinkedList{
         list.insertAt(0, 12);
         list.show();
         list.delete(2);
+        list.show();
+        list.printMiddle();
+        list.deleteMid();
         list.show();
     }
 }
