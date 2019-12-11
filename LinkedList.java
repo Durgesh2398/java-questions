@@ -1,6 +1,7 @@
 import java.util.*;
 class LinkedMain{
     Node head;
+    //1st
     class Node{
         int data;
         Node next;
@@ -9,6 +10,7 @@ class LinkedMain{
             next = null;
         }
     }
+    //2nd
     public void insert(int data){
         Node node = new Node(data);
         node.data=data;
@@ -23,6 +25,7 @@ class LinkedMain{
             n.next =node;
         }
     }
+    //3rd
     public void insertAtStart(int data){
         Node node = new Node(data);
         node.data=data;
@@ -30,6 +33,7 @@ class LinkedMain{
         node.next=head;
         head=node;
     }
+    //4th
     public void insertAt(int index,int data){
         Node node = new Node(data);
         node.data=data;
@@ -46,6 +50,7 @@ class LinkedMain{
             n.next = node;
         }
     }
+    //5th
     public void show(){
         Node node= head;
         while(node!=null){
@@ -54,6 +59,7 @@ class LinkedMain{
         }
         System.out.println("");
     }
+    //6th
     void printMiddle() 
     { 
         Node slow_ptr = head; 
@@ -65,9 +71,10 @@ class LinkedMain{
                 fast_ptr = fast_ptr.next.next; 
                 slow_ptr = slow_ptr.next; 
             } 
-            System.out.println("The middle element is [" + slow_ptr.data + "] \n"); 
+            System.out.print("The middle element is [" + slow_ptr.data + "] \n"); 
         } 
     }
+    //7th
     void delete(int position) 
     { 
         if (head == null) 
@@ -83,6 +90,7 @@ class LinkedMain{
         Node next = temp.next.next; 
         temp.next = next;  // Unlink the deleted node from list 
     }
+    //8th
     public void deleteMid()  
     {  
         Node slow_ptr = head;  
@@ -96,6 +104,19 @@ class LinkedMain{
         }  
         prev.next = slow_ptr.next;   
     } 
+    //9th
+    public void reverse(){
+        Node prev = null; 
+        Node current = head; 
+        Node next = null; 
+        while (current != null) { 
+            next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
+        } 
+        head = prev; 
+    }
 }
 public class LinkedList{
     public static void main(String[] args){
@@ -104,18 +125,39 @@ public class LinkedList{
         list.insert(6);
         list.insert(7);
         list.show();
+
+        System.out.println("Insert at start :");
         list.insertAtStart(10);
         list.show();
+        
+        System.out.println("Insert at index 2 :");
         list.insertAt(2, 45);
         list.show();
+        
+        System.out.println("Insert at index 4 :");
         list.insertAt(4, 100);
         list.show();
+        
+        System.out.println("Insert at index 0 :");
         list.insertAt(0, 12);
         list.show();
+        
+        System.out.println("Delete by index 2 :");
         list.delete(2);
         list.show();
+        
+        System.out.println("Print middle element");
         list.printMiddle();
+        
+        list.show();
+        System.out.println("Delete middle element");
         list.deleteMid();
+        list.show();
+
+        System.out.println("before reverse");
+        list.show();
+        System.out.println("after reverse");
+        list.reverse();
         list.show();
     }
 }
