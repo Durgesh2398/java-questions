@@ -1,6 +1,7 @@
 import java.util.*;
 class LinkedMain{
     Node head;
+    
     //1st
     class Node{
         int data;
@@ -10,6 +11,7 @@ class LinkedMain{
             next = null;
         }
     }
+    
     //2nd
     public void insert(int data){
         Node node = new Node(data);
@@ -25,6 +27,7 @@ class LinkedMain{
             n.next =node;
         }
     }
+    
     //3rd
     public void insertAtStart(int data){
         Node node = new Node(data);
@@ -33,6 +36,7 @@ class LinkedMain{
         node.next=head;
         head=node;
     }
+    
     //4th
     public void insertAt(int index,int data){
         Node node = new Node(data);
@@ -50,6 +54,7 @@ class LinkedMain{
             n.next = node;
         }
     }
+    
     //5th
     public void show(){
         Node node= head;
@@ -59,6 +64,7 @@ class LinkedMain{
         }
         System.out.println("");
     }
+    
     //6th
     void printMiddle() 
     { 
@@ -74,6 +80,7 @@ class LinkedMain{
             System.out.print("The middle element is [" + slow_ptr.data + "] \n"); 
         } 
     }
+    
     //7th
     void delete(int position) 
     { 
@@ -90,6 +97,7 @@ class LinkedMain{
         Node next = temp.next.next; 
         temp.next = next;  // Unlink the deleted node from list 
     }
+
     //8th
     public void deleteMid()  
     {  
@@ -104,6 +112,7 @@ class LinkedMain{
         }  
         prev.next = slow_ptr.next;   
     } 
+
     //9th
     public void reverse(){
         Node prev = null; 
@@ -116,6 +125,50 @@ class LinkedMain{
             current = next; 
         } 
         head = prev; 
+    }
+
+    //10th
+    Node sortedMerge(Node a, Node b) 
+    { 
+        Node result = null; 
+        if (a == null) 
+            return b; 
+        if (b == null) 
+            return a; 
+        if (a.data <= b.data) { 
+            result = a; 
+            result.next = sortedMerge(a.next, b); 
+        } 
+        else { 
+            result = b; 
+            result.next = sortedMerge(a, b.next); 
+        } 
+        return result; 
+    } 
+    Node mergeSort(Node h) 
+    { 
+        if (h == null || h.next == null) { 
+            return h; 
+        } 
+        Node middle = getMiddle(h); 
+        Node nextofmiddle = middle.next; 
+        middle.next = null; 
+        Node left = mergeSort(h); 
+        Node right = mergeSort(nextofmiddle); 
+        Node sortedlist = sortedMerge(left, right); 
+        return sortedlist; 
+    } 
+    public static Node getMiddle(Node head) 
+    { 
+        if (head == null) 
+            return head; 
+        Node slow = head;
+        Node fast = head; 
+        while (fast.next != null && fast.next.next != null) { 
+            slow = slow.next; 
+            fast = fast.next.next; 
+        } 
+        return slow; 
     }
 }
 public class LinkedList{
@@ -158,6 +211,10 @@ public class LinkedList{
         list.show();
         System.out.println("after reverse");
         list.reverse();
+        list.show();
+
+        System.out.println("Merge sort");
+        list.mergeSort(list.head);
         list.show();
     }
 }
